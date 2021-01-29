@@ -5,7 +5,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(require('./../.sequelizerc').config)[env];
 const db = {};
 
 let sequelize;
@@ -40,10 +40,20 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
+// sequelize.sync({ force: true })
+//   .then(data => {
+//     console.log('Sync Ok');
+//   })
+//   .catch(err => {
+//     console.log('err :>> ', err);
+//     process.exit(1)
+//   })
+
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-sequelize.sync().catch((err) => {
+sequelize.sync().catch((error) => {
   console.log('error: ', error);
   process.exit(1);
 });
