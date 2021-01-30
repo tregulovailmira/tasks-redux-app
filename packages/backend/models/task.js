@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Task.init(
     {
-      id: {
-        allowNull: false,
-        autoIcrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
+      // id: {
+      //   allowNull: false,
+      //   autoIcrement: true,
+      //   primaryKey: true,
+      //   type: DataTypes.INTEGER,
+      // },
       value: {
         type: DataTypes.STRING(512),
         allowNull: false,

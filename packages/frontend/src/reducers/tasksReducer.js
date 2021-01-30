@@ -29,11 +29,11 @@ function tasksReducer(state = initialState, action) {
     }
 
     case ACTION_TYPES.CREATE_TASK_SUCCESS: {
-      const { task } = action;
+      const { data } = action;
       const { tasks } = state;
       return {
         ...state,
-        tasks: [...tasks, task],
+        tasks: [...tasks, data],
         isFetching: false,
         error: false,
       };

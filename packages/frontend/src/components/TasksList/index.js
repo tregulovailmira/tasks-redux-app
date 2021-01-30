@@ -12,12 +12,10 @@ export default function TasksList() {
   useEffect(() => {
     getTasks();
   }, []);
-  console.log('error = ', error);
+
   return (
     <ul>
-      {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
-      ))}
+      {tasks && tasks.map((task) => <TaskItem key={task.id} task={task} />)}
       {isFetching && <li>Loading...</li>}
       {error && <li>ERROR</li>}
     </ul>

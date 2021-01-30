@@ -2,16 +2,17 @@ import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import * as tasksActionCreators from '../../actions/taskActionCreators';
+import * as tasksActionCreators from '../../actions/taskActionCreators';
 
 const initialValues = {
-  task: 'New Task',
+  value: 'New Task',
   isDone: false,
+  deadline: new Date().toLocaleDateString(),
 };
 function TaskForm() {
   const dispatch = useDispatch();
 
-  const { createTask } = bindActionCreators(bindActionCreators, dispatch);
+  const { createTask } = bindActionCreators(tasksActionCreators, dispatch);
 
   return (
     <Formik
@@ -23,8 +24,9 @@ function TaskForm() {
     >
       {(formik) => (
         <Form>
-          <Field name="task" />
+          <Field name="value" />
           <Field name="isDone" />
+          <Field name="deadline" />
           <button type="submit">Create task</button>
         </Form>
       )}

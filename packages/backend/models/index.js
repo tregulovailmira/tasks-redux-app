@@ -49,7 +49,6 @@ Object.keys(db).forEach((modelName) => {
 //     process.exit(1)
 //   })
 
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

@@ -17,7 +17,7 @@ module.exports.validateOnCreate = async (req, res, next) => {
 };
 
 const VALIDATION_UPDATE_SCHEMA = yup.object({
-  // то же самое, но не обязательные параметры, "что придет, то и валидируем"
+  
   value: yup.string(),
   isDone: yup.boolean(),
   deadline: yup.string(),
