@@ -7,9 +7,9 @@ import * as tasksActionCreators from '../../actions/taskActionCreators';
 const initialValues = {
   value: 'New Task',
   isDone: false,
-  deadline: new Date().toLocaleDateString(),
+  deadline: new Date().toLocaleDateString()
 };
-function TaskForm() {
+function TaskForm () {
   const dispatch = useDispatch();
 
   const { createTask } = bindActionCreators(tasksActionCreators, dispatch);

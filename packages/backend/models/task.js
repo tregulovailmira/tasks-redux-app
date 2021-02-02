@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate (models) {
       // define association here
     }
   }
@@ -24,20 +24,20 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notNull: true,
-          notEmpty: true,
-        },
+          notEmpty: true
+        }
       },
       isDone: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: false
       },
       deadline: {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
-          notNull: true,
-        },
-      },
+          notNull: true
+        }
+      }
     },
     {
       underscored: true,

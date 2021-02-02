@@ -6,16 +6,19 @@ import {
   getTasksRequest,
   getTasksSuccess,
   getTasksError,
+  updateTaskRequest,
+  updateTaskSuccess,
+  updateTaskError
 } from '../actions/taskActionCreators';
 
 import * as API from '../api';
 
-export function* createTaskSaga({ data }) {
+export function * createTaskSaga ({ data }) {
   yield put(createTaskRequest());
 
   try {
     const {
-      data: { data: task },
+      data: { data: task }
     } = yield API.createTask(data);
     yield put(createTaskSuccess(task));
   } catch (error) {
@@ -23,15 +26,27 @@ export function* createTaskSaga({ data }) {
   }
 }
 
-export function* getTasksSaga() {
+export function * getTasksSaga () {
   yield put(getTasksRequest());
 
   try {
     const {
-      data: { data: tasks },
+      data: { data: tasks }
     } = yield API.getTasks();
     yield put(getTasksSuccess(tasks));
   } catch (error) {
     yield put(getTasksError(error));
+  }
+}
+
+export function * updateTaskSaga (data) {
+  yield put(updateTaskRequest());
+
+  try {
+    const { data: { data: task } } = yield API.updateTask(data);
+    console.log(task);
+    yield put(updateTaskSuccess(task));
+  } catch (error) {
+    yield put(updateTaskError(error));
   }
 }

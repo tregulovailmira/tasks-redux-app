@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as tasksActionCreators from '../../actions/taskActionCreators';
 import TaskItem from './TaskItem';
 
-export default function TasksList() {
+export default function TasksList () {
   const { tasks, isFetching, error } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
   const { getTasks } = bindActionCreators(tasksActionCreators, dispatch);
@@ -12,7 +12,6 @@ export default function TasksList() {
   useEffect(() => {
     getTasks();
   }, []);
-
   return (
     <ul>
       {tasks && tasks.map((task) => <TaskItem key={task.id} task={task} />)}

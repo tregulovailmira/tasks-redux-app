@@ -9,4 +9,6 @@ tasksRouter
   .post(validateTask.validateOnCreate, taskController.createTask)
   .get(taskController.getAllTasks);
 
+tasksRouter.route('/:taskId').patch(validateTask.validateOnUpdate, taskController.updateTask);
+
 module.exports = tasksRouter;

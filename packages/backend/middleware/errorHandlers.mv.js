@@ -1,5 +1,5 @@
 const {
-  Sequelize: { BaseError },
+  Sequelize: { BaseError }
 } = require('../models');
 
 module.exports.sequelizeErrorHandler = (error, req, res, next) => {
@@ -15,6 +15,6 @@ module.exports.errorHandler = (error, req, res, next) => {
   res.status(error?.status ?? 500).send({
     data: null,
     errors: [{ title: error?.message ?? 'Enternal server error' }],
-    meta: null,
+    meta: null
   });
 };

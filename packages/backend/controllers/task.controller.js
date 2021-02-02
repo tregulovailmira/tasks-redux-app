@@ -14,7 +14,7 @@ module.exports.createTask = async (req, res, next) => {
 
 module.exports.getTask = async (req, res, next) => {
   const {
-    params: { taskId },
+    params: { taskId }
   } = req;
 
   try {
@@ -28,7 +28,7 @@ module.exports.getTask = async (req, res, next) => {
 };
 
 module.exports.getAllTasks = async (req, res, next) => {
-  const { body } = req;
+  // const { body } = req;
   try {
     const foundTasks = await Task.findAll();
     foundTasks
@@ -42,14 +42,14 @@ module.exports.getAllTasks = async (req, res, next) => {
 module.exports.updateTask = async (req, res, next) => {
   const {
     params: { taskId },
-    body,
+    body
   } = req;
 
   try {
-    const foundTask = Task.findById(taskId);
+    const foundTask = await Task.findByPk(taskId);
     if (foundTask) {
-      const updatedTask = await Task.update(taskId, body);
-      return res.status(200).send(updatedTask);
+      const updatedTask = await foundTask.update(body);
+      return res.status(200).send({ data: updatedTask });
     }
     res.status(404).send('Tasks not found');
   } catch (error) {
@@ -59,7 +59,7 @@ module.exports.updateTask = async (req, res, next) => {
 
 module.exports.removeTask = async (req, res, next) => {
   const {
-    params: { taskId },
+    params: { taskId }
   } = req;
   try {
     const deletedTask = await Task.delete(taskId);

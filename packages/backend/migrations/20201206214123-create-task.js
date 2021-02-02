@@ -9,26 +9,26 @@ module.exports = {
       //   type: Sequelize.INTEGER,
       // },
       value: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       isDone: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN
       },
       deadline: {
         type: Sequelize.DATE,
-        field: 'dead_line',
+        field: 'dead_line'
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Tasks');
-  },
+  }
 };

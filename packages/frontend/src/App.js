@@ -1,7 +1,8 @@
+import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Tasks from './pages/Tasks';
 
-function App() {
+function App () {
   return (
     <Router>
       <ul>
