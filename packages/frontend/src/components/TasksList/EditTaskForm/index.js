@@ -20,13 +20,18 @@ export default function EditTaskForm ({ task: { id, value, deadline } }) {
     updateTaskAction({ ...editedTask, id });
   };
 
+  const toogleEditTask = (e) => {
+    e.preventDefault();
+    toggleIsEditTask(id, false);
+  };
+
   return (
     <Formik initialValues={initialValues} onSubmit={(editedTask) => updateTask(editedTask)}>
         <Form>
             <Field name="value"/>
             <Field name="deadline"/>
             <button type="submit">Apply</button>
-            <button onClick={() => toggleIsEditTask(id, false)}>Cancel</button>
+            <button onClick={toogleEditTask}>Cancel</button>
         </Form>
     </Formik>
   );

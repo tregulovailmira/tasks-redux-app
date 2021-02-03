@@ -20,7 +20,6 @@ function TaskForm () {
       onSubmit={(value) => {
         createTaskAction(value);
       }}
-      task
     >
       {(formik) => (
         <Form>
