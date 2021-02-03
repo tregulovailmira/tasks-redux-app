@@ -1,15 +1,11 @@
 import { put } from 'redux-saga/effects';
 import {
-  createTaskRequest,
   createTaskSuccess,
   createTaskError,
-  getTasksRequest,
   getTasksSuccess,
   getTasksError,
-  updateTaskRequest,
   updateTaskSuccess,
   updateTaskError,
-  deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError
 } from '../actions/taskActionCreators';
@@ -17,8 +13,6 @@ import {
 import * as API from '../api';
 
 export function * createTaskSaga ({ data }) {
-  yield put(createTaskRequest());
-
   try {
     const {
       data: { data: task }
@@ -30,8 +24,6 @@ export function * createTaskSaga ({ data }) {
 }
 
 export function * getTasksSaga () {
-  yield put(getTasksRequest());
-
   try {
     const {
       data: { data: tasks }
@@ -43,7 +35,6 @@ export function * getTasksSaga () {
 }
 
 export function * updateTaskSaga (action) {
-  yield put(updateTaskRequest());
   try {
     const { data: { data: task } } = yield API.updateTask(action);
     yield put(updateTaskSuccess(task));
@@ -53,7 +44,6 @@ export function * updateTaskSaga (action) {
 }
 
 export function * deleteTaskSaga (data) {
-  yield put(deleteTaskRequest());
   try {
     const { data: { data: id } } = yield API.deleteTask(data);
     yield put(deleteTaskSuccess(id));

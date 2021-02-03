@@ -1,13 +1,9 @@
 import ACTION_TYPES from './types';
 
 // CREATE
-export const createTask = (data) => ({
-  type: ACTION_TYPES.CREATE_TASK,
+export const createTaskAction = (data) => ({
+  type: ACTION_TYPES.CREATE_TASK_ACTION,
   data
-});
-
-export const createTaskRequest = () => ({
-  type: ACTION_TYPES.CREATE_TASK_REQUEST
 });
 
 export const createTaskSuccess = (data) => ({
@@ -21,12 +17,8 @@ export const createTaskError = (error) => ({
 });
 
 // GET
-export const getTasks = () => ({
-  type: ACTION_TYPES.GET_TASKS
-});
-
-export const getTasksRequest = () => ({
-  type: ACTION_TYPES.GET_TASKS_REQUEST
+export const getTasksAction = () => ({
+  type: ACTION_TYPES.GET_TASKS_ACTION
 });
 
 export const getTasksSuccess = (tasks) => ({
@@ -47,10 +39,6 @@ export const updateTaskAction = (task) => {
   };
 };
 
-export const updateTaskRequest = () => ({
-  type: ACTION_TYPES.UPDATE_TASK_REQUEST
-});
-
 export const updateTaskSuccess = (task) => {
   return {
     type: ACTION_TYPES.UPDATE_TASK_SUCCESS,
@@ -66,10 +54,6 @@ export const updateTaskError = (error) => ({
 export const deleteTaskAction = (id) => ({
   type: ACTION_TYPES.DELETE_TASK_ACTION,
   payload: { id }
-});
-
-export const deleteTaskRequest = () => ({
-  type: ACTION_TYPES.DELETE_TASK_REQUEST
 });
 
 export const deleteTaskSuccess = (id) => ({

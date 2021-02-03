@@ -7,10 +7,10 @@ import TaskItem from './TaskItem';
 export default function TasksList () {
   const { tasks, isFetching, error } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { getTasks } = bindActionCreators(tasksActionCreators, dispatch);
+  const { getTasksAction } = bindActionCreators(tasksActionCreators, dispatch);
 
   useEffect(() => {
-    getTasks();
+    getTasksAction();
   }, []);
   return (
     <ul>

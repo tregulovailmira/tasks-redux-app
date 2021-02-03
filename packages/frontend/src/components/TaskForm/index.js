@@ -12,13 +12,13 @@ const initialValues = {
 function TaskForm () {
   const dispatch = useDispatch();
 
-  const { createTask } = bindActionCreators(tasksActionCreators, dispatch);
+  const { createTaskAction } = bindActionCreators(tasksActionCreators, dispatch);
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(value) => {
-        createTask(value);
+        createTaskAction(value);
       }}
       task
     >

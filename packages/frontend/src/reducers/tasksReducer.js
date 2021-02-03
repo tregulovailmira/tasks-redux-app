@@ -9,10 +9,10 @@ const initialState = {
 function tasksReducer (state = initialState, action) {
   const { type } = action;
   switch (type) {
-    case ACTION_TYPES.CREATE_TASK_REQUEST:
-    case ACTION_TYPES.GET_TASKS_REQUEST:
-    case ACTION_TYPES.UPDATE_TASK_REQUEST:
-    case ACTION_TYPES.DELETE_TASK_REQUEST: {
+    case ACTION_TYPES.CREATE_TASK_ACTION:
+    case ACTION_TYPES.GET_TASKS_ACTION:
+    case ACTION_TYPES.UPDATE_TASK_ACTION:
+    case ACTION_TYPES.DELETE_TASK_ACTION: {
       return {
         ...state,
         isFetching: true,
