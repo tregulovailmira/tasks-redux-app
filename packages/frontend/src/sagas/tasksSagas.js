@@ -8,7 +8,10 @@ import {
   getTasksError,
   updateTaskRequest,
   updateTaskSuccess,
-  updateTaskError
+  updateTaskError,
+  deleteTaskRequest,
+  deleteTaskSuccess,
+  deleteTaskError
 } from '../actions/taskActionCreators';
 
 import * as API from '../api';
@@ -39,14 +42,23 @@ export function * getTasksSaga () {
   }
 }
 
-export function * updateTaskSaga (data) {
+export function * updateTaskSaga (action) {
   yield put(updateTaskRequest());
 
   try {
-    const { data: { data: task } } = yield API.updateTask(data);
-    console.log(task);
+    const { data: { data: task } } = yield API.updateTask(action);
     yield put(updateTaskSuccess(task));
   } catch (error) {
     yield put(updateTaskError(error));
+  }
+}
+
+export function * deleteTaskSaga (data) {
+  yield put(deleteTaskRequest());
+  try {
+    const { data: { data: id } } = yield API.deleteTask(data);
+    yield put(deleteTaskSuccess(id));
+  } catch (error) {
+    yield put(deleteTaskError(error));
   }
 }

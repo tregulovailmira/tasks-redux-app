@@ -44,7 +44,6 @@ module.exports.updateTask = async (req, res, next) => {
     params: { taskId },
     body
   } = req;
-
   try {
     const foundTask = await Task.findByPk(taskId);
     if (foundTask) {
@@ -62,8 +61,9 @@ module.exports.removeTask = async (req, res, next) => {
     params: { taskId }
   } = req;
   try {
-    const deletedTask = await Task.delete(taskId);
-    deletedTask ? res.status(204) : res.status(404).send('The task not found');
+    const foundedTask = await Task.findByPk(taskId);
+    const deletedTask = await foundedTask.destroy();
+    deletedTask ? res.status(200).send({ data: taskId }) : res.status(404).send('The task not found');
   } catch (error) {
     next(error);
   }

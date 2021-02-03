@@ -40,21 +40,44 @@ export const getTasksError = (error) => ({
 });
 
 // UPDATE
-export const updateTaskAction = (task) => ({
-  type: ACTION_TYPES.UPDATE_TASK_ACTION,
-  payload: { task }
-});
+export const updateTaskAction = (task) => {
+  return {
+    type: ACTION_TYPES.UPDATE_TASK_ACTION,
+    payload: { task }
+  };
+};
 
 export const updateTaskRequest = () => ({
   type: ACTION_TYPES.UPDATE_TASK_REQUEST
 });
 
-export const updateTaskSuccess = (task) => ({
-  type: ACTION_TYPES.UPDATE_TASK_SUCCESS,
-  payload: { task }
-});
+export const updateTaskSuccess = (task) => {
+  return {
+    type: ACTION_TYPES.UPDATE_TASK_SUCCESS,
+    payload: { task }
+  };
+};
 
 export const updateTaskError = (error) => ({
   type: ACTION_TYPES.UPDATE_TASK_ERROR,
+  payload: { error }
+});
+
+export const deleteTaskAction = (id) => ({
+  type: ACTION_TYPES.DELETE_TASK_ACTION,
+  payload: { id }
+});
+
+export const deleteTaskRequest = () => ({
+  type: ACTION_TYPES.DELETE_TASK_REQUEST
+});
+
+export const deleteTaskSuccess = (id) => ({
+  type: ACTION_TYPES.DELETE_TASK_SUCCESS,
+  payload: { id }
+});
+
+export const deleteTaskError = (error) => ({
+  type: ACTION_TYPES.DELETE_TASK_ERROR,
   payload: { error }
 });

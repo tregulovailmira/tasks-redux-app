@@ -6,11 +6,11 @@ import * as taskActionCreators from '../../../actions/taskActionCreators';
 
 export default function TaskItem (props) {
   const {
-    task: { value, isDone, deadline }, task
+    task: { id, value, isDone, deadline }, task
   } = props;
 
   const dispatch = useDispatch();
-  const { updateTaskAction } = bindActionCreators(taskActionCreators, dispatch);
+  const { updateTaskAction, deleteTaskAction } = bindActionCreators(taskActionCreators, dispatch);
   const toggleIsDoneTask = () => {
     const updatedTask = { ...task, isDone: !isDone };
     updateTaskAction(updatedTask);
@@ -20,7 +20,8 @@ export default function TaskItem (props) {
       <div>task: {value}</div>
       <div>isDone: {isDone.toString()}</div>
       <div>deadline: {deadline}</div>
-      <input type="checkbox" value={isDone} onChange={toggleIsDoneTask}/>
+      <input type="checkbox" checked={isDone} onChange={toggleIsDoneTask}/>
+      <button onClick={() => deleteTaskAction(id)}>Delete task</button>
     </li>
   );
 }
@@ -34,5 +35,4 @@ TaskItem.propTypes = {
       deadline: PropTypes.string.isRequired
     }
   ).isRequired
-
 };

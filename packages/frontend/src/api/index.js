@@ -8,7 +8,12 @@ export const createTask = (data) => apiInstance.post('/tasks', data);
 
 export const getTasks = () => apiInstance.get('/tasks');
 
-export const updateTask = (data) => {
-  const { payload: { task: { id }, task } } = data;
+export const updateTask = async (action) => {
+  const { payload: { task: { id }, task } } = action;
   return apiInstance.patch(`/tasks/${id}`, task);
+};
+
+export const deleteTask = (data) => {
+  const { payload: { id } } = data;
+  return apiInstance.delete(`/tasks/${id}`);
 };
