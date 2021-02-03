@@ -5,8 +5,9 @@ import { bindActionCreators } from 'redux';
 import * as tasksActionCreators from '../../actions/taskActionCreators';
 
 const initialValues = {
-  value: 'New Task',
-  deadline: new Date().toLocaleDateString()
+  value: '',
+  deadline: '',
+  isDone: false
 };
 function TaskForm () {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ function TaskForm () {
     >
       {(formik) => (
         <Form>
-          <Field name="value" />
-          <Field name="deadline" />
+          <Field name="value" placeholder="New Task" />
+          <Field name="deadline" placeholder="02/05/2025 17:20" />
           <button type="submit">Create task</button>
         </Form>
       )}

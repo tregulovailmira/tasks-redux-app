@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import { format, parseISO } from 'date-fns';
 import * as taskActionCreators from '../../../actions/taskActionCreators';
 import EditTaskForm from '../EditTaskForm';
 
@@ -16,11 +17,12 @@ export default function TaskItem (props) {
     const updatedTask = { ...task, isDone: !isDone };
     updateTaskAction(updatedTask);
   };
+  const preparedDeadline = format(parseISO(deadline), 'dd/MM/yyyy HH:mm');
 
   const taskItem = <>
           <div>task: {value}</div>
           <div>isDone: {isDone.toString()}</div>
-          <div>deadline: {deadline}</div>
+          <div>deadline: {preparedDeadline}</div>
           <input type="checkbox" checked={isDone} onChange={toggleIsDoneTask}/>
           <button onClick={() => deleteTaskAction(id)}>Delete task</button>
           <button onClick={() => toggleIsEditTask(id, true)}>Edit task</button>
