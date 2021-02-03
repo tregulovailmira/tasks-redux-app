@@ -81,3 +81,8 @@ export const deleteTaskError = (error) => ({
   type: ACTION_TYPES.DELETE_TASK_ERROR,
   payload: { error }
 });
+
+export const toggleIsEditTask = (id, isEdit) => ({
+  type: ACTION_TYPES.TOGGLE_IS_EDIT_TASK,
+  payload: { isEdit, id }
+});

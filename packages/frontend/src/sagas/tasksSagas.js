@@ -44,7 +44,6 @@ export function * getTasksSaga () {
 
 export function * updateTaskSaga (action) {
   yield put(updateTaskRequest());
-
   try {
     const { data: { data: task } } = yield API.updateTask(action);
     yield put(updateTaskSuccess(task));

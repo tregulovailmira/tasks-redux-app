@@ -80,6 +80,17 @@ function tasksReducer (state = initialState, action) {
       };
     }
 
+    case ACTION_TYPES.TOGGLE_IS_EDIT_TASK: {
+      const { payload: { id, isEdit } } = action;
+      const { tasks } = state;
+      const newTasks = tasks.map((task) => task.id === id ? { ...task, isEdit } : task);
+      return {
+        ...state,
+        tasks: newTasks,
+        isFetching: false,
+        error: false
+      };
+    }
     default: {
       return state;
     }

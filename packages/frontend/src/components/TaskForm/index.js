@@ -6,7 +6,6 @@ import * as tasksActionCreators from '../../actions/taskActionCreators';
 
 const initialValues = {
   value: 'New Task',
-  isDone: false,
   deadline: new Date().toLocaleDateString()
 };
 function TaskForm () {
@@ -25,7 +24,6 @@ function TaskForm () {
       {(formik) => (
         <Form>
           <Field name="value" />
-          <Field name="isDone" />
           <Field name="deadline" />
           <button type="submit">Create task</button>
         </Form>
